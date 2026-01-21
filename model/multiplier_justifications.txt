@@ -1,0 +1,10 @@
+Multiplier justifications:
+
+PROFILES = {
+    "ideal_uniform_11kg": [1.02, 1.00, 1.01, 0.97],
+    "beginner": [1.03, 1.01, 1.00, 0.96],
+}
+
+Ideal pacing assumes uniform, boots, and 11 kg ruck. Early pacing is deliberately conservative to account for boot stiffness, 
+ruck settling, and cardiovascular ramp-up. Minor mid-march fatigue is accepted and offset by a controlled final push, 
+consistent with military load-carriage doctrine and endurance pacing research.

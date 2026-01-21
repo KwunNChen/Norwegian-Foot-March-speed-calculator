@@ -34,3 +34,18 @@ def estimate_total_time(distance_mi, run_sec):
     k = average_slope()
     fitness = run_sec / (1.5 * 60)
     return distance_mi * k * fitness
+
+def quarter_splits(total_time_sec):
+    """
+    Split total ruck time into 4 quarters with pacing multipliers.
+    Returns list of 4 quarter times (seconds).
+    """
+
+    multipliers = [1.02, 1.00, 1.01, 0.97]
+    avg_quarter = total_time_sec / 4
+    quarters = []
+
+    for m in multipliers:
+        q_time = avg_quarter * m
+        quarters.append(q_time)
+    return quarters
