@@ -6,7 +6,7 @@ DB_PATH.parent.mkdir(exist_ok=True)
 
 conn = sqlite3.connect(DB_PATH)
 cur = conn.cursor()
-
+#This doesn't execute at all if 
 cur.execute("""
 CREATE TABLE IF NOT EXISTS ruck_tests (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
