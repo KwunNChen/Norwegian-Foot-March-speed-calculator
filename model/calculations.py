@@ -6,12 +6,12 @@ DB_PATH = Path("data/training_set.db")
 
 def fetch_fresh_rows():
     conn = sqlite3.connect(DB_PATH)
+    #wtf does cursor do again?
     cur = conn.cursor()
-    cur.execute("""
-        SELECT run_1p5_sec, ruck_distance_mi, ruck_time_sec
-        FROM ruck_tests
-        WHERE is_fresh = 1
-    """)
+    cur.execute("""SELECT run_1p5_sec, lap_time_sec, ruck_distance_mi, ruck_time_sec, weather_label 
+                FROM ruck_tests 
+                WHERE is_fresh = 1""")
+
     rows = cur.fetchall()
     conn.close()
     return rows
@@ -40,7 +40,6 @@ def quarter_splits(total_time_sec):
     Split total ruck time into 4 quarters with pacing multipliers.
     Returns list of 4 quarter times (seconds).
     """
-
     multipliers = [1.02, 1.00, 1.01, 0.97]
     avg_quarter = total_time_sec / 4
     quarters = []
