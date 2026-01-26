@@ -1,12 +1,12 @@
 import sqlite3
 from pathlib import Path
 from statistics import mean
-
+#In model/calculations.py, make sure you throw a clear error when there are 0 fresh rows (you likely already do). Example idea: raise ValueError("NO_DATA") or a human message like "No fresh ruck data available".
 DB_PATH = Path("data/training_set.db")
 
 def fetch_fresh_rows():
     conn = sqlite3.connect(DB_PATH)
-    #wtf does cursor do again?
+    #Cursor to fetch relevant data for calculations, and to traverse rows
     cur = conn.cursor()
     cur.execute("""SELECT run_1p5_sec, lap_time_sec, ruck_distance_mi, ruck_time_sec, weather_label 
                 FROM ruck_tests 
@@ -28,6 +28,7 @@ def average_slope():
     rows = fetch_fresh_rows()
     if not rows:
         raise ValueError("No fresh ruck data available")
+        #Raises error if no fresh data
     return mean(compute_slopes(rows))
 
 def estimate_total_time(distance_mi, run_sec):
